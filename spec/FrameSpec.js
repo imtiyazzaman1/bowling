@@ -20,6 +20,13 @@ describe('Frame', function () {
 
       expect(frame.rollTwo).toEqual(6)
     })
+
+    it('throws error if value does not match remaining pins ', function() {
+      frame.addRollOne(5)
+
+      expect(function () { frame.addRollTwo(6) })
+      .toThrow(new Error('Number is higher than remaining pins'));
+    });
   })
 
   describe('#addRolls', function () {

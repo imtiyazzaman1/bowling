@@ -9,6 +9,9 @@ Frame.prototype.addRollOne = function (num) {
 }
 
 Frame.prototype.addRollTwo = function (num) {
+  if (num > (10 - this.rollOne)) {
+    throw new Error('Number is higher than remaining pins')
+  }
   this.rollTwo = num
 }
 
