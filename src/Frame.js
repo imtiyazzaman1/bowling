@@ -4,22 +4,37 @@ function Frame () {
   this.score = undefined
   this.bonus = []
   this.isComplete = false
+  this.isSpare = false
+  this.isStrike = false
 }
 
 Frame.prototype.addRoll = function (num) {
+  this._checkIfComplete()
+
   if (this.rollOne === undefined) {
     this._checkNumber(num)
     this.rollOne = num
   } else if (this.rollTwo === undefined) {
     this._checkNumber(num)
     this.rollTwo = num
+
+    if (this.rollOne + this.rollTwo == 10) {
+      this.isSpare = true
+    }
+
+    if (!this.isSpare) {
+      this._setAsComplete()
+    }
   } else {
-    throw new Error('Select the next frame. This frame is complete')
+
   }
 }
 
 Frame.prototype.addBonus = function (num) {
   this.bonus.push(num)
+  if (this.isSpare) {
+    this._setAsComplete()
+  }
 }
 
 Frame.prototype.calculateScore = function () {
@@ -34,10 +49,9 @@ Frame.prototype.calculateScore = function () {
     var bonus = this.bonus.reduce(_sumArray)
     this.score += bonus
   }
-
 }
 
-Frame.prototype.setAsComplete = function () {
+Frame.prototype._setAsComplete = function () {
   this.isComplete = true
 }
 
@@ -48,6 +62,12 @@ Frame.prototype._checkNumber = function (num) {
     throw new Error('Score entered is higher than remaining pins')
   }
 }
+
+Frame.prototype._checkIfComplete = function () {
+  if (this.isComplete) {
+    throw new Error('Select the next frame. This frame is complete')
+  }
+};
 
 function _sumArray(total, num) {
   return total + num

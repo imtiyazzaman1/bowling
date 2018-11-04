@@ -50,19 +50,10 @@ describe('Frame', function () {
     })
   })
 
-  describe('#setAsComplete', function () {
-    it('sets the frame as complete', function () {
-      frame.setAsComplete()
-
-      expect(frame.isComplete).toEqual(true)
-    })
-  })
-
   describe('#calculateScore', function () {
     it('totals the score for the frame', function () {
       frame.addRoll(5)
       frame.addRoll(4)
-      frame.setAsComplete()
       frame.calculateScore()
 
       expect(frame.score).toEqual(9)
@@ -72,7 +63,6 @@ describe('Frame', function () {
       frame.addRoll(6)
       frame.addRoll(4)
       frame.addBonus(6)
-      frame.setAsComplete()
       frame.calculateScore()
 
       expect(frame.score).toEqual(16)
