@@ -27,6 +27,6 @@ Frame.prototype.addBonus = function (num) {
 }
 
 Frame.prototype.calculateScore = function () {
-  this.score = this.rollOne + this.rollTwo
+  this.score = this.rollOne + this.rollTwo + this.bonus
 }
 module.exports = Frame

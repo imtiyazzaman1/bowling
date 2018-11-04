@@ -44,9 +44,7 @@ describe('Frame', function () {
   describe('#addBonus', function () {
     it('adds bonus points to the frame', function () {
       frame.addBonus(8)
-      console.log(frame.bonus)
       frame.addBonus(2)
-      console.log(frame.bonus)
 
       expect(frame.bonus).toEqual(10)
     })
@@ -59,6 +57,15 @@ describe('Frame', function () {
       frame.calculateScore()
 
       expect(frame.score).toEqual(9)
+    })
+
+    it('includes any bonuses in the score', function () {
+      frame.addRoll(6)
+      frame.addRoll(4)
+      frame.addBonus(6)
+      frame.calculateScore()
+
+      expect(frame.score).toEqual(16)
     })
   })
 })
