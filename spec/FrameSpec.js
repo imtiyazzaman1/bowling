@@ -46,7 +46,7 @@ describe('Frame', function () {
       frame.addBonus(8)
       frame.addBonus(2)
 
-      expect(frame.bonus).toEqual(10)
+      expect(frame.bonus).toEqual([8, 2])
     })
   })
 

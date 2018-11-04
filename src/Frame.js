@@ -2,7 +2,7 @@ function Frame () {
   this.rollOne = undefined
   this.rollTwo = undefined
   this.score = undefined
-  this.bonus = 0
+  this.bonus = []
   this.isComplete = false
 }
 
@@ -19,14 +19,22 @@ Frame.prototype.addRoll = function (num) {
 }
 
 Frame.prototype.addBonus = function (num) {
-  this.bonus += num
+  this.bonus.push(num)
 }
 
 Frame.prototype.calculateScore = function () {
   if (!this.isComplete) {
     throw new Error('Frame is not complete')
   }
-  this.score = this.rollOne + this.rollTwo + this.bonus
+
+  this.score = this.rollOne + this.rollTwo
+  if (!this.bonus.length) {
+    return
+  } else {
+    var bonus = this.bonus.reduce(_sumArray)
+    this.score += bonus
+  }
+
 }
 
 Frame.prototype.setAsComplete = function () {
@@ -40,4 +48,9 @@ Frame.prototype._checkNumber = function (num) {
     throw new Error('Score entered is higher than remaining pins')
   }
 }
+
+function _sumArray(total, num) {
+  return total + num
+}
+
 module.exports = Frame
