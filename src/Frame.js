@@ -7,16 +7,11 @@ function Frame () {
 }
 
 Frame.prototype.addRoll = function (num) {
-  if (num > 10) {
-    throw new Error('Number is higher than 10')
-  }
-
   if (this.rollOne === undefined) {
+    this._checkNumber(num)
     this.rollOne = num
   } else if (this.rollTwo === undefined) {
-    if (num > (10 - this.rollOne)) {
-      throw new Error('Score entered is higher than remaining pins')
-    }
+    this._checkNumber(num)
     this.rollTwo = num
   } else {
     throw new Error('Select the next frame. This frame is complete')
@@ -36,5 +31,13 @@ Frame.prototype.calculateScore = function () {
 
 Frame.prototype.setAsComplete = function () {
   this.isComplete = true
+}
+
+Frame.prototype._checkNumber = function (num) {
+  if (num > 10) {
+    throw new Error('Number is higher than 10')
+  } else if (num > (10 - this.rollOne)) {
+    throw new Error('Score entered is higher than remaining pins')
+  }
 }
 module.exports = Frame
