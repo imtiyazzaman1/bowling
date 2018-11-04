@@ -81,7 +81,6 @@ describe('Frame', function () {
     it('returns true if both rolls are complete', function() {
       frame.addRoll(2)
       frame.addRoll(2)
-      console.log(frame);
       expect(frame.isFinishedRolling()).toEqual(true);
     });
   });
