@@ -13,33 +13,43 @@ describe('Frame', function () {
       expect(frame.rollOne).toEqual(3)
     })
 
-    it('throws error if number is higher than 10', function() {
-      expect(function () {frame.addRoll(11)})
-      .toThrow(new Error("Number is higher than 10"));
-    });
+    it('throws error if number is higher than 10', function () {
+      expect(function () { frame.addRoll(11) })
+        .toThrow(new Error('Number is higher than 10'))
+    })
 
-    it('adds the score for roll 2 to the frame', function() {
+    it('adds the score for roll 2 to the frame', function () {
       frame.addRoll(3)
       frame.addRoll(4)
 
-      expect(frame.rollTwo).toEqual(4);
-    });
+      expect(frame.rollTwo).toEqual(4)
+    })
 
-    it('throws error if second roll is higher than remainging pins', function() {
+    it('throws error if second roll is higher than remainging pins', function () {
       frame.addRoll(5)
 
-      expect(function () {frame.addRoll(6)})
-      .toThrow(new Error("Score entered is higher than remaining pins"));
-    });
+      expect(function () { frame.addRoll(6) })
+        .toThrow(new Error('Score entered is higher than remaining pins'))
+    })
 
-    it('throws error if both rolls are complete', function() {
+    it('throws error if both rolls are complete', function () {
       frame.addRoll(1)
       frame.addRoll(4)
 
-      expect(function () {frame.addRoll(1)})
-      .toThrow(new Error("Select the next frame. This frame is complete"));
-    });
+      expect(function () { frame.addRoll(1) })
+        .toThrow(new Error('Select the next frame. This frame is complete'))
+    })
+  })
 
+  describe('#addBonus', function () {
+    it('adds bonus points to the frame', function () {
+      frame.addBonus(8)
+      console.log(frame.bonus)
+      frame.addBonus(2)
+      console.log(frame.bonus)
+
+      expect(frame.bonus).toEqual(10)
+    })
   })
 
   describe('#calculateScore', function () {

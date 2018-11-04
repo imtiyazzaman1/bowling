@@ -2,6 +2,7 @@ function Frame () {
   this.rollOne = undefined
   this.rollTwo = undefined
   this.score = undefined
+  this.bonus = 0
 }
 
 Frame.prototype.addRoll = function (num) {
@@ -17,12 +18,15 @@ Frame.prototype.addRoll = function (num) {
     }
     this.rollTwo = num
   } else {
-    throw new Error("Select the next frame. This frame is complete")
+    throw new Error('Select the next frame. This frame is complete')
   }
+}
+
+Frame.prototype.addBonus = function (num) {
+  this.bonus += num
 }
 
 Frame.prototype.calculateScore = function () {
   this.score = this.rollOne + this.rollTwo
 }
-console.log(123);
-module.exports = Frame;
+module.exports = Frame
