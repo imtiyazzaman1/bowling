@@ -26,6 +26,9 @@ Frame.prototype.addRoll = function (num) {
 }
 
 Frame.prototype.addBonus = function (num) {
+  if (this.isComplete) {
+    return
+  }
   this.bonus.push(num)
   if (this.isSpare) {
     this._setAsComplete()

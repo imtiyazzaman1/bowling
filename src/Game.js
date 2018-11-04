@@ -14,6 +14,13 @@ Game.prototype.addRollToFrame = function (num) {
     this.i++
     this.current_frame = this.frames[this.i]
   }
+
+  if (this.frames[this.i - 1] !== undefined) {
+    if (this.frames[this.i - 1].isSpare) {
+      this.frames[this.i - 1].addBonus(num);
+    }
+  }
+
   this.current_frame.addRoll(num)
 };
 

@@ -33,5 +33,15 @@ describe('Game', function () {
 
       expect(game.frames[0].score).toEqual(8)
     })
+
+    it('calculates the score for frames with a spare', function() {
+      game.addRollToFrame(5)
+      game.addRollToFrame(5)
+      game.addRollToFrame(5)
+      game.addRollToFrame(5)
+      game.calcScores()
+
+      expect(game.frames[0].score).toEqual(15)
+    });
   })
 })
