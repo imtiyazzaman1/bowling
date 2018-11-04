@@ -34,7 +34,7 @@ Frame.prototype.addBonus = function (num) {
 
 Frame.prototype.calculateScore = function () {
   if (!this.isComplete) {
-    throw new Error('Frame is not complete')
+    return
   }
   this.score = this.rollOne + this.rollTwo
 

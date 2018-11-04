@@ -67,14 +67,6 @@ describe('Frame', function () {
 
       expect(frame.score).toEqual(16)
     })
-
-    it('throws error if frame is incomplete', function () {
-      frame.addRoll(6)
-      frame.addRoll(4)
-
-      expect(function () { frame.calculateScore() })
-        .toThrow(new Error('Frame is not complete'))
-    })
   })
 
   describe('#isFinishedRolling', function() {
