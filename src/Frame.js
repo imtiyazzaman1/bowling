@@ -17,16 +17,11 @@ Frame.prototype.addRoll = function (num) {
   } else if (this.rollTwo === undefined) {
     this._checkNumber(num)
     this.rollTwo = num
-
-    if (this.rollOne + this.rollTwo == 10) {
-      this.isSpare = true
-    }
+    this._checkIfSpare()
 
     if (!this.isSpare) {
       this._setAsComplete()
     }
-  } else {
-
   }
 }
 
@@ -41,11 +36,9 @@ Frame.prototype.calculateScore = function () {
   if (!this.isComplete) {
     throw new Error('Frame is not complete')
   }
-
   this.score = this.rollOne + this.rollTwo
-  if (!this.bonus.length) {
-    return
-  } else {
+  
+  if (this.bonus.length) {
     var bonus = this.bonus.reduce(_sumArray)
     this.score += bonus
   }
@@ -67,9 +60,15 @@ Frame.prototype._checkIfComplete = function () {
   if (this.isComplete) {
     throw new Error('Select the next frame. This frame is complete')
   }
-};
+}
 
-function _sumArray(total, num) {
+Frame.prototype._checkIfSpare = function () {
+  if (this.rollOne + this.rollTwo === 10) {
+    this.isSpare = true
+  }
+}
+
+function _sumArray (total, num) {
   return total + num
 }
 
