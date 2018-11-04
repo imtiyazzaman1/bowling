@@ -3,7 +3,7 @@ function Frame () {
   this.rollTwo = undefined
   this.score = undefined
   this.bonus = 0
-  this.complete = false
+  this.isComplete = false
 }
 
 Frame.prototype.addRoll = function (num) {
@@ -28,10 +28,13 @@ Frame.prototype.addBonus = function (num) {
 }
 
 Frame.prototype.calculateScore = function () {
+  if (!this.isComplete) {
+    throw new Error('Frame is not complete')
+  }
   this.score = this.rollOne + this.rollTwo + this.bonus
 }
 
 Frame.prototype.setAsComplete = function () {
   this.isComplete = true
-};
+}
 module.exports = Frame
