@@ -15,13 +15,24 @@ $( document ).ready(function () {
     frame6, frame7, frame8, frame9, frame10
   ]
 
+  var i = 0
+
   function updateScores(num) {
-    var current_frame = frames[0]
+    var current_frame = frames[i]
+
     if (current_frame.rollTwo !== undefined) {
-      frames.shift()
-      current_frame = frames[0]
+      i++
+      current_frame = frames[i]
     }
     current_frame.addRoll(num)
+
+    for (var j = 0; j < frames.length; j++) {
+      if (!frames[j].isComplete) {
+        continue;
+      }
+      frames[j].calculateScore()
+    }
+
     updateText()
   }
 
@@ -74,5 +85,6 @@ $( document ).ready(function () {
     console.log($(this).val());
     num = Number($(this).val())
     updateScores(num)
+    console.log(frame1);
   })
 })
