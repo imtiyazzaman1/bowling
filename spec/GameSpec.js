@@ -43,5 +43,16 @@ describe('Game', function () {
 
       expect(game.frames[0].score).toEqual(15)
     });
+
+    it('calculate the overall score', function() {
+      game.addRollToFrame(5)
+      game.addRollToFrame(5)
+      game.addRollToFrame(5)
+      game.addRollToFrame(5)
+      game.addRollToFrame(5)
+      game.calcScores()
+
+      expect(game.totalScore).toEqual(30);
+    });
   })
 })

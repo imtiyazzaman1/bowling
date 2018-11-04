@@ -6,6 +6,7 @@ function Game(frames = [new Frame, new Frame, new Frame, new Frame, new Frame,
   this.frames = frames
   this.i = 0
   this.current_frame = this.frames[this.i]
+  this.totalScore = 0
 }
 
 Game.prototype.addRollToFrame = function (num) {
@@ -30,6 +31,7 @@ Game.prototype.calcScores = function () {
       continue
     }
     this.frames[i].calculateScore()
+    this.totalScore += this.frames[i].score
   }
 };
 
