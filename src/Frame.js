@@ -37,12 +37,16 @@ Frame.prototype.calculateScore = function () {
     throw new Error('Frame is not complete')
   }
   this.score = this.rollOne + this.rollTwo
-  
+
   if (this.bonus.length) {
     var bonus = this.bonus.reduce(_sumArray)
     this.score += bonus
   }
 }
+
+Frame.prototype.isFinishedRolling = function () {
+  return this.rollTwo !== undefined
+};
 
 Frame.prototype._setAsComplete = function () {
   this.isComplete = true
