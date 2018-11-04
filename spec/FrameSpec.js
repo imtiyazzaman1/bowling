@@ -68,4 +68,12 @@ describe('Frame', function () {
       expect(frame.score).toEqual(16)
     })
   })
+
+  describe('#setAsComplete', function() {
+    it('sets the frame as complete', function() {
+      frame.setAsComplete()
+
+      expect(frame.isComplete).toEqual(true);
+    });
+  });
 })
