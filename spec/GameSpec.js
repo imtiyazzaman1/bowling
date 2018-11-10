@@ -46,16 +46,12 @@ describe('Game', function () {
     })
 
     it('calculate the overall score', function () {
-      console.log(game.totalScore)
       game.addRollToFrame(5)
       game.calcScores()
-      console.log(game.totalScore)
       game.addRollToFrame(5)
       game.calcScores()
-      console.log(game.totalScore)
       game.addRollToFrame(5)
       game.calcScores()
-      console.log(game.totalScore)
       game.addRollToFrame(5)
       game.calcScores()
 

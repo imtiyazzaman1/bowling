@@ -3,14 +3,10 @@ function Game (frames = [new Frame(), new Frame(), new Frame(), new Frame(), new
   this.frames = frames
   this.i = 0
   this.current_frame = this.frames[this.i]
-  this.totalScore = 0
 }
 
 Game.prototype.addRollToFrame = function (num) {
-  if (this.current_frame.isFinishedRolling()) {
-    this.i++
-    this.current_frame = this.frames[this.i]
-  }
+  if (this.current_frame.isFinishedRolling()) this._moveToNextFrame()
 
   if (this.frames[this.i - 1] !== undefined) {
     if (this.frames[this.i - 1].isSpare) {
@@ -24,18 +20,18 @@ Game.prototype.addRollToFrame = function (num) {
 Game.prototype.calcScores = function () {
   this.totalScore = 0
   for (var i = 0; i < this.frames.length; i++) {
-    if (this.frames[i].rollTwo === undefined) {
-      continue
-    }
-
     this.frames[i].calculateScore()
-
-    if (this.frames[i].score !== undefined) {
-      this.totalScore += this.frames[i].score
-    }
+    this._addToTotal(i)
   }
 }
 
-Game.prototype.print = function () {
-  return 'this is a game'
+Game.prototype._addToTotal = function (i) {
+  if (this.frames[i].score !== undefined) {
+    this.totalScore += this.frames[i].score
+  }
+}
+
+Game.prototype._moveToNextFrame = function () {
+  this.i++
+  this.current_frame = this.frames[this.i]
 }
