@@ -22,12 +22,17 @@ Game.prototype.addRollToFrame = function (num) {
 }
 
 Game.prototype.calcScores = function () {
+  this.totalScore = 0
   for (var i = 0; i < this.frames.length; i++) {
     if (this.frames[i].rollTwo === undefined) {
       continue
     }
+
     this.frames[i].calculateScore()
-    this.totalScore += this.frames[i].score
+
+    if (this.frames[i].score !== undefined) {
+      this.totalScore += this.frames[i].score
+    }
   }
 }
 

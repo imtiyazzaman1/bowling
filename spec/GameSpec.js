@@ -34,8 +34,11 @@ describe('Game', function () {
 
     it('calculates the score for frames with a spare', function () {
       game.addRollToFrame(5)
+      game.calcScores()
       game.addRollToFrame(5)
+      game.calcScores()
       game.addRollToFrame(5)
+      game.calcScores()
       game.addRollToFrame(5)
       game.calcScores()
 
@@ -43,14 +46,20 @@ describe('Game', function () {
     })
 
     it('calculate the overall score', function () {
+      console.log(game.totalScore)
       game.addRollToFrame(5)
+      game.calcScores()
+      console.log(game.totalScore)
       game.addRollToFrame(5)
+      game.calcScores()
+      console.log(game.totalScore)
       game.addRollToFrame(5)
-      game.addRollToFrame(5)
+      game.calcScores()
+      console.log(game.totalScore)
       game.addRollToFrame(5)
       game.calcScores()
 
-      expect(game.totalScore).toEqual(30)
+      expect(game.totalScore).toEqual(15)
     })
   })
 })
