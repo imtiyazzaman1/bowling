@@ -34,6 +34,10 @@ Frame.prototype.addBonus = function (num) {
   if (this.isSpare) {
     this._setAsComplete()
   }
+
+  if (this.bonus.length === 2) {
+    this._setAsComplete()
+  }
 }
 
 Frame.prototype.calculateScore = function () {

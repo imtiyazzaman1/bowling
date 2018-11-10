@@ -53,10 +53,16 @@ describe('Frame', function () {
       expect(frame.bonus).toEqual([8, 2])
     })
 
-    it('sets frame as a spare after one bonus added', function() {
+    it('sets frame as complete after one bonus added', function() {
       frame.isSpare = true
       frame.addBonus(3)
+      expect(frame.isComplete).toEqual(true);
+    });
 
+    it('sets the frame as complete after 2 bonuses added', function() {
+      frame.isStrike = true
+      frame.addBonus(3)
+      frame.addBonus(3)
       expect(frame.isComplete).toEqual(true);
     });
   })
