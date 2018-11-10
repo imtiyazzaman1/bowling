@@ -83,7 +83,7 @@ Frame.prototype._checkIfSpare = function () {
 Frame.prototype._setAsStrike = function () {
   this.isStrike = true
   this.rollTwo = 0
-};
+}
 
 function _sumArray (total, num) {
   return total + num

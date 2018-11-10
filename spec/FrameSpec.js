@@ -38,11 +38,11 @@ describe('Frame', function () {
         .toThrow(new Error('Select the next frame. This frame is complete'))
     })
 
-    it('saves as a strike if the first roll is 10', function() {
+    it('saves as a strike if the first roll is 10', function () {
       frame.addRoll(10)
 
-      expect(frame.isStrike).toEqual(true);
-    });
+      expect(frame.isStrike).toEqual(true)
+    })
   })
 
   describe('#addBonus', function () {
@@ -53,18 +53,20 @@ describe('Frame', function () {
       expect(frame.bonus).toEqual([8, 2])
     })
 
-    it('sets frame as complete after one bonus added', function() {
+    it('sets frame as complete after one bonus added', function () {
       frame.isSpare = true
       frame.addBonus(3)
-      expect(frame.isComplete).toEqual(true);
-    });
 
-    it('sets the frame as complete after 2 bonuses added', function() {
+      expect(frame.isComplete).toEqual(true)
+    })
+
+    it('sets the frame as complete after 2 bonuses added', function () {
       frame.isStrike = true
       frame.addBonus(3)
       frame.addBonus(3)
-      expect(frame.isComplete).toEqual(true);
-    });
+
+      expect(frame.isComplete).toEqual(true)
+    })
   })
 
   describe('#calculateScore', function () {
