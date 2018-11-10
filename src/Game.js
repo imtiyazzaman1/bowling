@@ -1,5 +1,3 @@
-var Frame = require('./Frame.js')
-
 function Game(frames = [new Frame, new Frame, new Frame, new Frame, new Frame,
   new Frame, new Frame, new Frame, new Frame, new Frame, ])
 {
@@ -10,6 +8,7 @@ function Game(frames = [new Frame, new Frame, new Frame, new Frame, new Frame,
 }
 
 Game.prototype.addRollToFrame = function (num) {
+  console.log('adding roll');
   var current_frame = this.frames[this.i]
   if (this.current_frame.isFinishedRolling()) {
     this.i++
@@ -35,4 +34,6 @@ Game.prototype.calcScores = function () {
   }
 };
 
-module.exports = Game
+Game.prototype.print = function () {
+  return 'this is a game'
+};

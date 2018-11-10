@@ -78,5 +78,3 @@ Frame.prototype._checkIfSpare = function () {
 function _sumArray (total, num) {
   return total + num
 }
-
-module.exports = Frame
