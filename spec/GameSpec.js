@@ -45,6 +45,17 @@ describe('Game', function () {
       expect(game.frames[0].score).toEqual(15)
     })
 
+    it('calculates the score for frames with a strike', function() {
+      game.addRollToFrame(10)
+      game.calcScores()
+      game.addRollToFrame(5)
+      game.calcScores()
+      game.addRollToFrame(5)
+      game.calcScores()
+
+      expect(game.frames[0].score).toEqual(20);
+    });
+
     it('calculate the overall score', function () {
       game.addRollToFrame(5)
       game.calcScores()
