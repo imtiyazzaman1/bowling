@@ -1,31 +1,16 @@
+$(document).ready(function () {
+  const game = new Game()
 
-$( document ).ready(function () {
-  const game = new Game();
-  // var frame1 = new Frame();
-  // var frame2 = new Frame();
-  // var frame3 = new Frame();
-  // var frame4 = new Frame();
-  // var frame5 = new Frame();
-  // var frame6 = new Frame();
-  // var frame7 = new Frame();
-  // var frame8 = new Frame();
-  // var frame9 = new Frame();
-  // var frame10 = new Frame();
-  //
-  // var frames = [frame1, frame2, frame3, frame4, frame5,
-  //   frame6, frame7, frame8, frame9, frame10
-  // ]
-  //
-  // var i = 0
-
-  function updateScores(num) {
+  function updateScores (num) {
     game.addRollToFrame(num)
     game.calcScores()
 
     updateText()
   }
 
-  function updateText() {
+  function updateText () {
+    $('#total-score').text(game.totalScore)
+
     $('#frame-1-roll-1').text(game.frames[0].rollOne)
     $('#frame-1-roll-2').text(game.frames[0].rollTwo)
     $('#frame-1-score').text(game.frames[0].score)
@@ -50,7 +35,6 @@ $( document ).ready(function () {
     $('#frame-6-roll-2').text(game.frames[5].rollTwo)
     $('#frame-6-score').text(game.frames[5].score)
 
-
     $('#frame-7-roll-1').text(game.frames[6].rollOne)
     $('#frame-7-roll-2').text(game.frames[6].rollTwo)
     $('#frame-7-score').text(game.frames[6].score)
@@ -66,11 +50,9 @@ $( document ).ready(function () {
     $('#frame-10-roll-1').text(game.frames[9].rollOne)
     $('#frame-10-roll-2').text(game.frames[9].rollTwo)
     $('#frame-10-score').text(game.frames[9].score)
-
   }
 
-  $("button").click(function () {
-    console.log($(this).val());
+  $('button').click(function () {
     num = Number($(this).val())
     updateScores(num)
   })
