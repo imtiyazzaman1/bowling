@@ -52,6 +52,13 @@ describe('Frame', function () {
 
       expect(frame.bonus).toEqual([8, 2])
     })
+
+    it('sets frame as a spare after one bonus added', function() {
+      frame.isSpare = true
+      frame.addBonus(3)
+
+      expect(frame.isComplete).toEqual(true);
+    });
   })
 
   describe('#calculateScore', function () {
