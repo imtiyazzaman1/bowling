@@ -11,6 +11,9 @@ Game.prototype.addRollToFrame = function (num) {
   if (this.frames[this.i - 1] !== undefined) {
     if (this.frames[this.i - 1].isSpare) {
       this.frames[this.i - 1].addBonus(num)
+    } else if (this.frames[this.i - 1].isStrike) {
+      this.frames[this.i - 1].addBonus(num)
+
     }
   }
 
