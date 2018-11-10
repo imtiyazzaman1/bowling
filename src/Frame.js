@@ -49,7 +49,7 @@ Frame.prototype.calculateScore = function () {
 
 Frame.prototype.isFinishedRolling = function () {
   return this.rollTwo !== undefined
-};
+}
 
 Frame.prototype._setAsComplete = function () {
   this.isComplete = true

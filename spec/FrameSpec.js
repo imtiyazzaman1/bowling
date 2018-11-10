@@ -67,11 +67,12 @@ describe('Frame', function () {
     })
   })
 
-  describe('#isFinishedRolling', function() {
-    it('returns true if both rolls are complete', function() {
+  describe('#isFinishedRolling', function () {
+    it('returns true if both rolls are complete', function () {
       frame.addRoll(2)
       frame.addRoll(2)
-      expect(frame.isFinishedRolling()).toEqual(true);
-    });
-  });
+
+      expect(frame.isFinishedRolling()).toEqual(true)
+    })
+  })
 })
