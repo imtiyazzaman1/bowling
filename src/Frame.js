@@ -49,7 +49,7 @@ Frame.prototype.calculateScore = function () {
 
 Frame.prototype.isFinishedRolling = function () {
   return this.rollTwo !== undefined
-};
+}
 
 Frame.prototype._setAsComplete = function () {
   this.isComplete = true
@@ -78,5 +78,3 @@ Frame.prototype._checkIfSpare = function () {
 function _sumArray (total, num) {
   return total + num
 }
-
-module.exports = Frame

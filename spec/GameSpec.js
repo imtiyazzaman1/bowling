@@ -1,5 +1,3 @@
-var Game = require('../src/Game.js')
-
 describe('Game', function () {
   var game
   beforeEach(function () {
@@ -34,7 +32,7 @@ describe('Game', function () {
       expect(game.frames[0].score).toEqual(8)
     })
 
-    it('calculates the score for frames with a spare', function() {
+    it('calculates the score for frames with a spare', function () {
       game.addRollToFrame(5)
       game.addRollToFrame(5)
       game.addRollToFrame(5)
@@ -42,9 +40,9 @@ describe('Game', function () {
       game.calcScores()
 
       expect(game.frames[0].score).toEqual(15)
-    });
+    })
 
-    it('calculate the overall score', function() {
+    it('calculate the overall score', function () {
       game.addRollToFrame(5)
       game.addRollToFrame(5)
       game.addRollToFrame(5)
@@ -52,7 +50,7 @@ describe('Game', function () {
       game.addRollToFrame(5)
       game.calcScores()
 
-      expect(game.totalScore).toEqual(30);
-    });
+      expect(game.totalScore).toEqual(30)
+    })
   })
 })
