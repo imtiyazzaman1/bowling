@@ -8,7 +8,6 @@ function Game(frames = [new Frame, new Frame, new Frame, new Frame, new Frame,
 }
 
 Game.prototype.addRollToFrame = function (num) {
-  console.log('adding roll');
   var current_frame = this.frames[this.i]
   if (this.current_frame.isFinishedRolling()) {
     this.i++
