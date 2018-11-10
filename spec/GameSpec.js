@@ -1,5 +1,3 @@
-var Game = require('../src/Game.js')
-
 describe('Game', function () {
   var game
   beforeEach(function () {

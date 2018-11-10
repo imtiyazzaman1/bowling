@@ -1,5 +1,3 @@
-var Frame = require('../src/Frame.js')
-
 describe('Frame', function () {
   var frame
   beforeEach(function () {
