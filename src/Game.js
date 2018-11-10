@@ -9,16 +9,10 @@ Game.prototype.addRollToFrame = function (num) {
   if (this.current_frame.isFinishedRolling()) this._moveToNextFrame()
 
   if (this._isNotFirstFrame()) {
-
-    if (this.frames[this.i - 1].isSpare) {
-      this.frames[this.i - 1].addBonus(num)
-
-    } else if (this.frames[this.i - 1].isStrike) {
-      this.frames[this.i - 1].addBonus(num)
-    }
+    this._addBonusToPreviousFrame(num)
   }
 
-  if (this.frames[this.i - 2] !== undefined && this.frames[this.i - 2].isStrike) {
+  if (this._isNotSecondFrame() && this._twoStrikesInARow()) {
     this.frames[this.i - 2].addBonus(num)
   }
 
@@ -46,4 +40,22 @@ Game.prototype._moveToNextFrame = function () {
 
 Game.prototype._isNotFirstFrame = function () {
   if (this.frames[this.i - 1] !== undefined) return true
-};
+}
+
+Game.prototype._isNotSecondFrame = function () {
+  if (this.frames[this.i - 2] !== undefined) return true
+}
+
+Game.prototype._twoStrikesInARow = function () {
+  if (this.frames[this.i - 2].isStrike) return true
+}
+
+Game.prototype._previousFrame = function () {
+  return this.frames[this.i - 1]
+}
+
+Game.prototype._addBonusToPreviousFrame = function (num) {
+  if (this._previousFrame().isSpare || this._previousFrame().isStrike) {
+    this.frames[this.i - 1].addBonus(num)
+  }
+}

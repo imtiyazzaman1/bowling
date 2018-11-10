@@ -45,7 +45,7 @@ describe('Game', function () {
       expect(game.frames[0].score).toEqual(15)
     })
 
-    it('calculates the score for frames with a strike', function() {
+    it('calculates the score for frames with a strike', function () {
       game.addRollToFrame(10)
       game.calcScores()
       game.addRollToFrame(5)
@@ -53,30 +53,30 @@ describe('Game', function () {
       game.addRollToFrame(5)
       game.calcScores()
 
-      expect(game.frames[0].score).toEqual(20);
-    });
+      expect(game.frames[0].score).toEqual(20)
+    })
 
-    it('calculates the score when there are 2 strikes is a row', function() {
+    it('calculates the score when there are 2 strikes is a row', function () {
       game.addRollToFrame(10)
-      console.log('i =');
-      console.log(game.i);
+      console.log('i =')
+      console.log(game.i)
       console.log(game.frames[0].bonus)
       game.calcScores()
 
       game.addRollToFrame(10)
-      console.log('i =');
-      console.log(game.i);
+      console.log('i =')
+      console.log(game.i)
       console.log(game.frames[0].bonus)
       game.calcScores()
 
       game.addRollToFrame(5)
-      console.log('i =');
-      console.log(game.i);
+      console.log('i =')
+      console.log(game.i)
       console.log(game.frames[0].bonus)
       game.calcScores()
 
-      expect(game.frames[0].score).toEqual(25);
-    });
+      expect(game.frames[0].score).toEqual(25)
+    })
 
     it('calculate the overall score', function () {
       game.addRollToFrame(5)
