@@ -37,6 +37,12 @@ describe('Frame', function () {
       expect(function () { frame.addRoll(1) })
         .toThrow(new Error('Select the next frame. This frame is complete'))
     })
+
+    it('saves as a strike if the first roll is 10', function() {
+      frame.addRoll(10)
+
+      expect(frame.isStrike).toEqual(true);
+    });
   })
 
   describe('#addBonus', function () {

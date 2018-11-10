@@ -13,6 +13,7 @@ Frame.prototype.addRoll = function (num) {
 
   if (this.rollOne === undefined) {
     this._checkNumber(num)
+    if (num === 10) this._setAsStrike()
     this.rollOne = num
   } else if (this.rollTwo === undefined) {
     this._checkNumber(num)
@@ -74,6 +75,11 @@ Frame.prototype._checkIfSpare = function () {
     this.isSpare = true
   }
 }
+
+Frame.prototype._setAsStrike = function () {
+  this.isStrike = true
+  this.rollTwo = 0
+};
 
 function _sumArray (total, num) {
   return total + num
