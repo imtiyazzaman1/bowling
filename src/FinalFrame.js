@@ -1,4 +1,5 @@
 function FinalFrame() {
+  this.bonus = []
   this.rollThree = undefined
 }
 
@@ -21,6 +22,9 @@ FinalFrame.prototype.addRoll = function (num) {
       this._setAsComplete()
     }
   } else if (this.rollThree === undefined && !this.isComplete) {
+    if (this.isSpare || this.isStrike) {
+      this.bonus.push(num)
+    }
     this._setRollThree(num)
     this._setAsComplete()
   }
