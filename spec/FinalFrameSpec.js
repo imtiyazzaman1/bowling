@@ -42,5 +42,13 @@ describe('Final Frame', function() {
       expect(finalFrame.score).toEqual(20);
     });
 
+    it('sets score for multiple stries', function() {
+      finalFrame.addRoll(10)
+      finalFrame.addRoll(10)
+      finalFrame.addRoll(10)
+      finalFrame.calculateScore()
+
+      expect(finalFrame.score).toEqual(30);
+    });
   });
 });
