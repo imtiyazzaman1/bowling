@@ -1,5 +1,5 @@
 function Game (frames = [new Frame(), new Frame(), new Frame(), new Frame(), new Frame(),
-  new Frame(), new Frame(), new Frame(), new Frame(), new Frame() ]) {
+  new Frame(), new Frame(), new Frame(), new Frame(), new FinalFrame() ]) {
   this.frames = frames
   this.i = 0
   this.current_frame = this.frames[this.i]
