@@ -58,21 +58,12 @@ describe('Game', function () {
 
     it('calculates the score when there are 2 strikes is a row', function () {
       game.addRollToFrame(10)
-      console.log('i =')
-      console.log(game.i)
-      console.log(game.frames[0].bonus)
       game.calcScores()
 
       game.addRollToFrame(10)
-      console.log('i =')
-      console.log(game.i)
-      console.log(game.frames[0].bonus)
       game.calcScores()
 
       game.addRollToFrame(5)
-      console.log('i =')
-      console.log(game.i)
-      console.log(game.frames[0].bonus)
       game.calcScores()
 
       expect(game.frames[0].score).toEqual(25)
