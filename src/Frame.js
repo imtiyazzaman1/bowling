@@ -12,25 +12,18 @@ Frame.prototype.addRoll = function (num) {
   this._checkIfComplete()
 
   if (this.rollOne === undefined) {
-    this._checkNumber(num)
-    if (num === 10) this._setAsStrike()
-    this.rollOne = num
+    this._setRollOne(num)
   } else if (this.rollTwo === undefined) {
-    this._checkNumber(num)
-    this.rollTwo = num
-    this._checkIfSpare()
-
-    if (!this.isSpare) {
-      this._setAsComplete()
-    }
+    this._setRollTwo(num)
+    this._checkIfBonus()
   }
 }
 
 Frame.prototype.addBonus = function (num) {
-  if (this.isComplete) {
-    return
-  }
+  if (this.isComplete) return
+
   this.bonus.push(num)
+
   if (this.isSpare) {
     this._setAsComplete()
   }
@@ -41,13 +34,14 @@ Frame.prototype.addBonus = function (num) {
 }
 
 Frame.prototype.calculateScore = function () {
-  if (!this.isComplete) {
-    return
-  }
+  if (!this.isComplete) return
+
   this.score = this.rollOne + this.rollTwo
 
   if (this.bonus.length) {
-    var bonus = this.bonus.reduce(_sumArray)
+    var bonus = this.bonus.reduce(function (total, num) {
+      return total + num
+    })
     this.score += bonus
   }
 }
@@ -85,6 +79,20 @@ Frame.prototype._setAsStrike = function () {
   this.rollTwo = 0
 }
 
-function _sumArray (total, num) {
-  return total + num
+Frame.prototype._checkIfBonus = function () {
+  if (!this.isSpare && !this.isStrike) {
+    this._setAsComplete()
+  }
+}
+
+Frame.prototype._setRollOne = function (num) {
+  this._checkNumber(num)
+  if (num === 10) this._setAsStrike()
+  this.rollOne = num
+}
+
+Frame.prototype._setRollTwo = function (num) {
+  this._checkNumber(num)
+  this.rollTwo = num
+  this._checkIfSpare()
 }
