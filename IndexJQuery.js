@@ -49,6 +49,7 @@ $(document).ready(function () {
 
     $('#frame-10-roll-1').text(game.frames[9].rollOne)
     $('#frame-10-roll-2').text(game.frames[9].rollTwo)
+    $('#frame-10-roll-3').text(game.frames[9].rollThree)
     $('#frame-10-score').text(game.frames[9].score)
   }
 
